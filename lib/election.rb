@@ -20,6 +20,10 @@ class Election
   end
 
   def vote_counts
-
+    vote_count_hash = Hash.new(0)
+    candidates.each do |candidate|
+    vote_count_hash[candidate.name] += candidate.votes
+    end
+    vote_count_hash
   end
 end
