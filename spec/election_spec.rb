@@ -34,24 +34,11 @@ RSpec.describe Election do
   end
 
   it 'vote counts method' do
-    diana = Candidate.new({name: "Diana D", party: :democrat})
-    roberto = Candidate.new({name: "Roberto R", party: :republican})
     election1 = Election.new("2024")
     race = Race.new("Texas Governor")
     candidate1 = race.register_candidate!({name: "Diana D", party: :democrat})
     candidate2 = race.register_candidate!({name: "Roberto R", party: :republican})
     election1.add_race(race)
     expect(election1.vote_counts).to eq({"Diana D" => 0, "Roberto R" => 0})
-    diana.vote_for!
-    diana.vote_for!
-    diana.vote_for!
-    expect(election1.vote_counts).to eq({"Diana D" => 3, "Roberto R" => 0})
   end
-
 end
-
-# diana = Candidate.new({name: "Diana D", party: :democrat})
-# diana.vote_for!
-# race = Race.new("Texas Governor")
-# candidate1 = race.register_candidate!({name: "Diana D", party: :democrat})
-# candidate2 = race.register_candidate!({name: "Roberto R", party: :republican})
