@@ -40,5 +40,9 @@ RSpec.describe Election do
     candidate2 = race.register_candidate!({name: "Roberto R", party: :republican})
     election1.add_race(race)
     expect(election1.vote_counts).to eq({"Diana D" => 0, "Roberto R" => 0})
+    candidate1.vote_for!
+    candidate1.vote_for!
+    candidate1.vote_for!
+    expect(election1.vote_counts).to eq({"Diana D" => 3, "Roberto R" => 0})
   end
 end
